@@ -1,0 +1,36 @@
+model:
+  framework: 'lstm' #shared,ind,spv,rebuild
+  load_paths:
+    depth_encoder: null
+    pose_encoder: null
+  lr: 0.0001
+  scheduler_step_size: 190
+  input_fnum: 4
+  output_fnum: 6
+  optimizer_path: null
+  hidden_size: 5
+  num_layers: 2
+  
+dataset:
+  type: 'ctmnt'
+  X_names: ['Tem','Hum','Ap','Wv']#,'Wx','Wy']
+  Y_names: ['SO2','NO2','PM10','PM2.5','O3','CO']
+  path: '/home/roit/datasets/huawei2021/pb-data2/post/A_h_CW_detection.csv'
+  split:
+    path: '/home/roit/datasets/splits/CTMNT'
+    train_file: 'train.txt'
+    val_file: 'val.txt'
+
+
+
+
+# global
+seq_length: 25 # for lstm
+device: 'cuda'
+num_workers: 12
+batch_size: 32
+log_dir: '/home/roit/models/seq/ctmnt'
+tb_log_frequency: 12
+epoch: 200
+model_first_save: 10
+weights_save_frequency: 10

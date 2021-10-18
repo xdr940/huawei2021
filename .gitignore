@@ -1,0 +1,5 @@
+data_reports
+tmp
+__pycache__
+.idea
+*.txt
